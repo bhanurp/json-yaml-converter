@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-YAML Converter</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="pane">
+        <h2>JSON Input</h2>
+        <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
+        <div class="controls">
+            <button onclick="convertToJson()">Convert to YAML</button>
+            <button onclick="prettifyJson()">Prettify JSON</button>
+            <button onclick="downloadFile('json')">Download JSON</button>
+            <input type="file" id="json-upload" onchange="uploadFile('json')">
+        </div>
+    </div>
+
+    <div class="pane">
+        <h2>YAML Output</h2>
+        <textarea id="yaml-output" placeholder="Converted YAML will appear here..."></textarea>
+        <div class="controls">
+            <button onclick="convertToYaml()">Convert to JSON</button>
+            <button onclick="checkYamlSpaces()">Check YAML Spaces</button>
+            <button onclick="downloadFile('yaml')">Download YAML</button>
+            <input type="file" id="yaml-upload" onchange="uploadFile('yaml')">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/conversion.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
