@@ -1,25 +1,25 @@
-// Upload file (JSON/YAML)
-function uploadFile(type) {
-    const fileInput = document.getElementById(type + '-upload');
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const fileContent = event.target.result;
-        if (type === 'json') {
-            document.getElementById('json-input').value = fileContent;
-        } else if (type === 'yaml') {
-            document.getElementById('yaml-output').value = fileContent;
-        }
-    };
-    reader.readAsText(fileInput.files[0]);
+// Dark Mode Toggle Functionality
+const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
+
+// Check localStorage for mode preference
+const userPreferredMode = localStorage.getItem('theme') || 'dark';
+
+// Apply the saved theme
+if (userPreferredMode === 'light') {
+    document.body.classList.add('light-mode');
+} else {
+    document.body.classList.remove('light-mode');
 }
 
-// Download file (JSON/YAML)
-function downloadFile(type) {
-    const text = (type === 'json') ? document.getElementById('json-input').value : document.getElementById('yaml-output').value;
-    const filename = `converted.${type}`;
-    const file = new Blob([text], { type: 'text/plain' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(file);
-    a.download = filename;
-    a.click();
-}
+// Add event listener to the toggle button
+toggleDarkModeButton.addEventListener('click', () => {
+    if (document.body.classList.contains('light-mode')) {
+        // Switch to Dark Mode
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('theme', 'dark'); // Save preference in localStorage
+    } else {
+        // Switch to Light Mode
+        document.body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light'); // Save preference in localStorage
+    }
+});

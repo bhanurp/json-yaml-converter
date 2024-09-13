@@ -1,4 +1,7 @@
+/* Default Dark Mode */
 body {
+    background-color: #121212;
+    color: #ffffff;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -19,6 +22,9 @@ textarea {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
 }
 
 .controls {
@@ -32,8 +38,31 @@ button, input[type="file"] {
     padding: 10px;
     cursor: pointer;
     margin-bottom: 10px;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #555;
 }
 
+/* Light Mode Styling */
+.light-mode {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.light-mode textarea {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+}
+
+.light-mode button, 
+.light-mode input[type="file"] {
+    background-color: #ddd;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+/* Responsive Layout */
 @media (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
