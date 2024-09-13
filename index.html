@@ -9,11 +9,14 @@
 <body>
     <header>
         <h1>JSON-YAML Converter</h1>
-        <button id="toggle-dark-mode">Toggle Light/Dark Mode</button>
+        <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider"></span>
+        </label>
     </header>
     
     <div class="pane">
-        <h2>JSON Input</h2>
+        <h2>JSON</h2>
         <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
         <div class="controls">
             <button onclick="convertToJson()">Convert to YAML</button>
@@ -24,7 +27,7 @@
     </div>
 
     <div class="pane">
-        <h2>YAML Output</h2>
+        <h2>YAML</h2>
         <textarea id="yaml-output" placeholder="Converted YAML will appear here..."></textarea>
         <div class="controls">
             <button onclick="convertToYaml()">Convert to JSON</button>
