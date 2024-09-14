@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "build": "npm run build",
+    "start": "npm run start",
+    "test": "cypress run"
+  },
   "devDependencies": {
     "cypress": "^13.14.2",
     "cypress-file-upload": "^5.0.8"
