@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON-YAML Converter with Dark Mode</title>
+    <title>JSON-YAML Converter</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,26 +14,44 @@
             <span class="slider"></span>
         </label>
     </header>
-    
-    <div class="pane">
-        <h2>JSON</h2>
-        <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
-        <div class="controls">
-            <button onclick="convertToJson()">Convert to YAML</button>
-            <button onclick="prettifyJson()">Prettify JSON</button>
-            <button onclick="downloadFile('json')">Download JSON</button>
-            <input type="file" id="json-upload" onchange="uploadFile(event)">
-        </div>
-    </div>
 
-    <div class="pane">
-        <h2>YAML</h2>
-        <textarea id="yaml-output" placeholder="Converted YAML will appear here..."></textarea>
-        <div class="controls">
-            <button onclick="convertToYaml()">Convert to JSON</button>
-            <button onclick="checkYamlSpaces()">Check YAML Spaces</button>
-            <button onclick="downloadFile('yaml')">Download YAML</button>
-            <input type="file" id="yaml-upload" onchange="uploadFile(event)">
+    <div class="container">
+        <div class="pane">
+            <h2>JSON</h2>
+            <div class="textarea-container">
+                <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
+                <button class="copy-btn" data-target="json-input">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+            <div class="controls">
+                <button class="button" onclick="convertToJson()">Get YAML</button>
+                <button class="button" onclick="prettifyJson()">Prettify JSON</button>
+                <button class="button" onclick="downloadFile(event)">Download JSON</button>
+                <div class="file-input-wrapper">
+                    <input type="file" id="json-upload" class="file-input" onchange="uploadFile(event)">
+                    <label for="json-upload" class="file-input-label">Upload JSON</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="pane">
+            <h2>YAML</h2>
+            <div class="textarea-container">
+                <textarea id="yaml-output" placeholder="Converted YAML will appear here..."></textarea>
+                <button class="copy-btn" data-target="yaml-output">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+            <div class="controls">
+                <button class="button" onclick="convertToYaml()">Get JSON</button>
+                <button class="button" onclick="checkYamlSpaces()">Check YAML Spaces</button>
+                <button class="button" onclick="downloadFile(event)">Download YAML</button>
+                <div class="file-input-wrapper">
+                    <input type="file" id="yaml-upload" class="file-input" onchange="uploadFile(event)">
+                    <label for="yaml-upload" class="file-input-label">Upload YAML</label>
+                </div>
+            </div>
         </div>
     </div>
 

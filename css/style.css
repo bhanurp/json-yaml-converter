@@ -1,22 +1,16 @@
-/* General Styling for Both Modes */
+/* General Styling */
 body {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns for larger screens */
-    gap: 40px; /* Add extra gap between JSON and YAML panes */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    height: 100vh; /* Full viewport height */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header Styling */
+/* Header Styling: Center title and place toggle at top-right */
 header {
-    grid-column: span 2; /* Make the header span across both columns */
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative; /* Allows the switch to be positioned relative to the header */
-    padding-bottom: 10px;
+    position: relative;
 }
 
 header h1 {
@@ -27,116 +21,101 @@ header h1 {
 header .switch {
     position: absolute;
     top: 0;
-    right: 0; /* Align the slider to the right top */
-    margin-right: 20px; /* Add some space from the right edge */
-    margin-top: 10px; /* Add some space from the top */
+    right: 20px;
 }
 
-/* Pane and Textarea Styling */
-.pane {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 80px); /* Adjust the pane height to fill the viewport, subtracting the header height */
-}
-
-textarea {
-    flex-grow: 1; /* This makes the textarea take up all available space */
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    min-height: 300px; /* Set a minimum height */
-}
-
-/* Controls (buttons) */
-.controls {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding-top: 20px; /* Add some padding above the buttons */
-}
-
-/* Button Styling */
-button, input[type="file"] {
-    padding: 12px 20px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    border-radius: 8px; /* Rounded corners */
-    border: none;
-    background-color: #007bff; /* Default background for buttons */
-    color: #fff;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-    font-size: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-/* Individual Button Colors */
-button:nth-child(1) {
-    background-color: #28a745; /* Green for Convert to YAML */
-}
-button:nth-child(2) {
-    background-color: #ffc107; /* Yellow for Prettify JSON */
-}
-button:nth-child(3) {
-    background-color: #17a2b8; /* Cyan for Download JSON */
-}
-button:nth-child(4) {
-    background-color: #dc3545; /* Red for Convert to JSON */
-}
-button:nth-child(5) {
-    background-color: #fd7e14; /* Orange for Check YAML Spaces */
-}
-input[type="file"] {
-    background-color: #6c757d; /* Gray for Upload buttons */
-    margin: 0 auto; /* Center the file input horizontally */
-    display: block; /* Ensure it's treated as a block element */
-}
-
-/* Button Hover Effect */
-button:hover, input[type="file"]:hover {
-    background-color: darken(10%, #007bff); /* Slightly darken on hover */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow on hover */
-}
-
-/* Dark Mode (Default) */
+/* Dark Mode (Default Mode) */
 body {
     background-color: #121212;
     color: #ffffff;
 }
 
-textarea {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
 }
 
-/* Light Mode Styling */
-.light-mode {
+body.light-mode {
     background-color: #f4f4f4;
-    color: #000;
+    color: #000000;
 }
 
-.light-mode textarea {
-    background-color: #fff;
-    color: #000;
+/* Container for panes */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Apply a consistent gap between the panes */
+    padding-right: 20px; /* Ensure the container has padding on the right */
+}
+
+/* Pane Styling */
+.pane {
+    flex: 1; /* Make both panes take equal width */
+    margin: 20px;
+}
+
+/* Remove any right margin for YAML pane */
+.pane:last-child {
+    margin-right: 0;
+}
+
+.textarea-container {
+    position: relative;
+}
+
+/* Textarea Styling */
+textarea {
+    width: 100%;
+    height: 600px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    resize: none;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode textarea {
+    background-color: #ffffff;
+    color: #000000;
     border: 1px solid #ddd;
 }
 
-.light-mode button, 
-.light-mode input[type="file"] {
-    background-color: #ddd;
-    color: #000;
+
+/* Copy Button Styling */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #c0a302;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.light-mode button:hover, 
-.light-mode input[type="file"]:hover {
-    background-color: #bbb; /* Darker on hover in light mode */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+.copy-btn i {
+    margin-right: 5px;
 }
 
-/* Toggle Switch Styling */
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Controls Styling */
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Dark Mode Toggle */
 .switch {
     position: relative;
     display: inline-block;
@@ -175,20 +154,86 @@ textarea {
 }
 
 input:checked + .slider {
-    background-color: #444;
+    background-color: #c0a302;
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Responsive Layout */
+/* Responsive: Stack text areas vertically on smaller screens */
 @media (max-width: 768px) {
-    body {
-        grid-template-columns: 1fr; /* Switch to one column for smaller screens */
+    .container {
+        flex-direction: column;
+        gap: 10px; /* Smaller gap when stacked vertically */
     }
 
-    button, input[type="file"] {
-        width: 100%; /* Full width on smaller screens */
+    .pane {
+        margin-right: 0;
     }
 }
+
+/* Buttons Styling */
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.file-input {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 4px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.file-input:hover {
+    background-color: #ddd;
+}
+/* End of Button Styling */
+
+/*File Input Styling */
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-input-label {
+    background-color: #c0a302;
+    color: white;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-input-label:hover {
+    background-color: #45a049;
+}
+/* End of File Input Styling */

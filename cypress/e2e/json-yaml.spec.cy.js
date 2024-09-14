@@ -3,7 +3,7 @@ describe('JSON-YAML Converter Tests', () => {
     it('should convert JSON to YAML correctly', () => {
       cy.visit('/');
       cy.get('#json-input').type('{"name": "Bhanu", "age": 30}', { parseSpecialCharSequences: false });
-      cy.contains('Convert to YAML').click();
+      cy.contains('Get YAML').click();
       cy.get('#yaml-output').should('have.value', 'name: Bhanu\nage: 30\n');
     });
   
@@ -11,7 +11,7 @@ describe('JSON-YAML Converter Tests', () => {
     it('should convert YAML to JSON correctly', () => {
       cy.visit('/');
       cy.get('#yaml-output').type('name: Bhanu\nage: 30', { parseSpecialCharSequences: false });
-      cy.contains('Convert to JSON').click();
+      cy.contains('Get JSON').click();
       cy.get('#json-input').should('have.value', '{\n  "name": "Bhanu",\n  "age": 30\n}');
     });
   
@@ -19,7 +19,7 @@ describe('JSON-YAML Converter Tests', () => {
     it('should show error for invalid JSON', () => {
       cy.visit('/');
       cy.get('#json-input').type('{name: "Bhanu"}', { parseSpecialCharSequences: false });
-      cy.contains('Convert to YAML').click();
+      cy.contains('Get YAML').click();
       cy.on('window:alert', (str) => {
         expect(str).to.equal('Invalid JSON: Expected property name or \'}\' in JSON at position 1 (line 1 column 2)');
       });
@@ -29,7 +29,7 @@ describe('JSON-YAML Converter Tests', () => {
     it('should show error for invalid YAML', () => {
       cy.visit('/');
       cy.get('#yaml-output').type('name: Bhanu\nage: 30: error');
-      cy.contains('Convert to JSON').click();
+      cy.contains('Get JSON').click();
       cy.on('window:alert', (str) => {
         expect(str).to.equal('Invalid YAML: bad indentation of a mapping entry (2:8)\n\n 1 | name: Bhanu\n 2 | age: 30: error\n------------^');
       });
@@ -41,12 +41,12 @@ describe('JSON-YAML Converter Tests', () => {
       cy.get('body').then(($body) => {
         console.log('Initial body class:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify dark mode is on
+      cy.get('body', { timeout: 10000 }).should('have.class', 'dark-mode'); // Verify dark mode is on
       cy.reload(); // Reload the page
       cy.get('body').then(($body) => {
         console.log('Body class after reload:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify dark mode persists after refresh
+      cy.get('body', { timeout: 10000 }).should('have.class', 'dark-mode'); // Verify dark mode persists after refresh
     });
   
     // Test 6: Prettify JSON
@@ -91,12 +91,12 @@ describe('JSON-YAML Converter Tests', () => {
       cy.get('body').then(($body) => {
         console.log('Initial body class:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify dark mode is on
+      cy.get('body', { timeout: 10000 }).should('have.class', 'dark-mode'); // Verify dark mode is on
       cy.reload(); // Reload the page
       cy.get('body').then(($body) => {
         console.log('Body class after reload:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify dark mode persists after refresh
+      cy.get('body', { timeout: 10000 }).should('have.class', 'dark-mode'); // Verify dark mode persists after refresh
     });
   
     // Test: Toggle Light Mode
@@ -105,17 +105,16 @@ describe('JSON-YAML Converter Tests', () => {
       cy.get('body').then(($body) => {
         console.log('Initial body class:', $body.attr('class'));
       });
-      cy.get('#dark-mode-toggle').click({ force: true }); // Toggle dark mode
-      cy.get('#dark-mode-toggle').click({ force: true }); // Toggle back to light mode
+      cy.get('#dark-mode-toggle').click({ force: true }); // Toggle dark mode off
       cy.get('body').then(($body) => {
         console.log('Body class after toggle:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify light mode is on
+      cy.get('body', { timeout: 10000 }).should('have.class', 'light-mode'); // Verify light mode is on
       cy.reload(); // Reload the page
       cy.get('body').then(($body) => {
         console.log('Body class after reload:', $body.attr('class'));
       });
-      cy.get('body', { timeout: 10000 }).should('not.have.class', 'dark-mode'); // Verify light mode persists after refresh
+      cy.get('body', { timeout: 10000 }).should('have.class', 'light-mode'); // Verify light mode persists after refresh
     });
   });
   
