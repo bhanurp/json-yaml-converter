@@ -1,10 +1,13 @@
 {
   "scripts": {
     "build": "npm install",
-    "start": "node dist/index.js",
-    "test": "cypress run"
+    "start": "node dist/index.js    npm install --save-dev @babel/core @babel/cli @babel/preset-env",
+    "test": "npx cypress run"
   },
   "devDependencies": {
+    "@babel/cli": "^7.25.6",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
     "cypress": "^13.14.2",
     "cypress-file-upload": "^5.0.8"
   }
