@@ -54,6 +54,23 @@ body.light-mode {
     margin: 20px;
 }
 
+.pane {
+    text-align: center; /* Center-align text within the pane */
+}
+
+.pane h2 {
+    margin: 0 auto; /* Center the h2 element */
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
 /* Remove any right margin for YAML pane */
 .pane:last-child {
     margin-right: 0;
@@ -214,7 +231,6 @@ input:checked + .slider:before {
 .file-input-wrapper {
     position: relative;
     display: inline-block;
-    margin-top: 15px;
 }
 
 .file-input {
