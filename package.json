@@ -9,6 +9,8 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "cypress": "^13.14.2",
-    "cypress-file-upload": "^5.0.8"
+    "cypress-file-upload": "^5.0.8",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
   }
 }
