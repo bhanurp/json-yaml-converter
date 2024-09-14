@@ -1,3 +1,7 @@
+// Declare the debounce timeout variables globally
+let jsonDebounceTimeout;
+let yamlDebounceTimeout;
+
 // Convert JSON to YAML
 function convertToJson() {
     const jsonText = document.getElementById('json-input').value;
