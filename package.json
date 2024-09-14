@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "npm run build",
-    "start": "npm run start",
+    "build": "npm install",
+    "start": "node dist/index.js",
     "test": "cypress run"
   },
   "devDependencies": {
