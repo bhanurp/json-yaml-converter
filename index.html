@@ -22,7 +22,7 @@
             <button onclick="convertToJson()">Convert to YAML</button>
             <button onclick="prettifyJson()">Prettify JSON</button>
             <button onclick="downloadFile('json')">Download JSON</button>
-            <input type="file" id="json-upload" onchange="uploadFile('json')">
+            <input type="file" id="json-upload" onchange="uploadFile(event)">
         </div>
     </div>
 
@@ -33,7 +33,7 @@
             <button onclick="convertToYaml()">Convert to JSON</button>
             <button onclick="checkYamlSpaces()">Check YAML Spaces</button>
             <button onclick="downloadFile('yaml')">Download YAML</button>
-            <input type="file" id="yaml-upload" onchange="uploadFile('yaml')">
+            <input type="file" id="yaml-upload" onchange="uploadFile(event)">
         </div>
     </div>
 

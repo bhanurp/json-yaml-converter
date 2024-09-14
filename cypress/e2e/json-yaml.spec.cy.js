@@ -62,7 +62,7 @@ describe('JSON-YAML Converter Tests', () => {
       cy.visit('/');
       const filePath = 'sample.json'; // Path to your test file in the Cypress fixtures folder
       cy.get('input[type="file"]#json-upload').attachFile(filePath);
-      cy.get('#json-input').should('have.value', '{"name": "Bhanu", "age": 30}');
+      cy.get('#json-input').should('have.value', '{\n  "name": "Bhanu",\n  "age": 30\n}');
     });
 
     // Test 8: Upload YAML File
