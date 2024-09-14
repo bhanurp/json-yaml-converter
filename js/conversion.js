@@ -32,3 +32,27 @@ function prettifyJson() {
         alert("Invalid JSON: " + err.message);
     }
 }
+
+document.getElementById('json-input').addEventListener('input', function () {
+    clearTimeout(jsonDebounceTimeout); // Clear the previous timeout
+    jsonDebounceTimeout = setTimeout(function() {
+        convertToYaml(); // Invoke the conversion to JSON
+    }, 500); // Set new timeout for 500ms after last input
+});
+
+document.getElementById('json-input').addEventListener('paste', function () {
+    clearTimeout(jsonDebounceTimeout);
+    jsonDebounceTimeout = setTimeout(convertToYaml, 500); // Convert 500ms after paste
+});
+
+document.getElementById('yaml-output').addEventListener('input', function () {
+    clearTimeout(yamlDebounceTimeout); // Clear the previous timeout
+    yamlDebounceTimeout = setTimeout(function() {
+        convertToJson(); // Invoke the conversion to JSON
+    }, 500); // Set new timeout for 500ms after last input
+});
+
+document.getElementById('yaml-output').addEventListener('paste', function () {
+    clearTimeout(yamlDebounceTimeout);
+    yamlDebounceTimeout = setTimeout(convertToJson, 500); // Convert 500ms after paste
+});

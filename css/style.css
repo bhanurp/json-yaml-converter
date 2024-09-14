@@ -83,7 +83,7 @@ body.light-mode {
 /* Textarea Styling */
 textarea {
     width: 100%;
-    height: 600px;
+    height: 75vh;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
